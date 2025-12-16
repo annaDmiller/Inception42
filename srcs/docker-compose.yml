@@ -4,6 +4,19 @@ services:
     build: ./requirements/nginx
     ports: 
       - "443:443"
+    volumes:
+      - wp_data:/var/www/html
+    networks:
+      - inception
+    restart: always
+    depends_on:
+      - wordpress
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    env_file:
+      - .env
     networks:
       - inception
     restart: always
@@ -11,3 +24,6 @@ services:
 networks:
   inception:
     driver: bridge
+
+volumes:
+  wp_data:
