@@ -1,5 +1,7 @@
 FROM debian:13.2
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends nginx openssl && \
     rm -rf /var/lib/apt/lists/*
@@ -12,6 +14,7 @@ RUN openssl req -x509 -nodes -days 365 \
     -out /etc/ssl/certs/selfsigned.crt \
     -subj "/C=FR/ST=Paris/L=Paris/O=42/OU=student/CN=amelniko.42.fr"
 
+RUN rm -f /etc/nginx/conf.d/*
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/default.conf /etc/nginx/conf.d/default.conf
 COPY conf/index.html /var/www/html/index.html

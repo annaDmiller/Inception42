@@ -20,10 +20,22 @@ services:
     networks:
       - inception
     restart: always
+  
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    env_file: 
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
 
 networks:
   inception:
     driver: bridge
 
 volumes:
+  db_data:
   wp_data:
