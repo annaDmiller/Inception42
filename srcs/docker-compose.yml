@@ -23,7 +23,7 @@ services:
   
   mariadb:
     container_name: mariadb
-    build: ./requirements/mariadb
+    build: ./requirements/mariaDB
     env_file: 
       - .env
     volumes:
@@ -42,10 +42,10 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/amelniko/data/mariadb
+      device: /home/amelniko/data/wordpress/mariadb
   wp_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/amelnikova/data/wordpress
+      device: /home/amelniko/data/wordpress/wp_files
