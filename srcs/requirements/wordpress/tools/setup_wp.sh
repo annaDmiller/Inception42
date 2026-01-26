@@ -14,9 +14,11 @@ cd /var/www/html
 if [ ! -f wp-config.php ]; then
     echo "Creating wp-config.php..."
 
-    if [ ! -f /var/www/html/wp-config.php ]; then
-        cp /usr/src/wordpress/wp-config-sample.php /var/www/html/wp-config.php
-    fi
+    wget -q https://wordpress.org/latest.tar.gz
+    tar -xzf latest.tar.gz --strip-components=1
+    rm latest.tar.gz
+
+    cp wp-config-sample.php wp-config.php
     
     # Replace database settings using env vars
     sed -i "s/database_name_here/${MYSQL_DATABASE}/" wp-config.php
