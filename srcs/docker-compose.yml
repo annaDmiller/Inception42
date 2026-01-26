@@ -15,6 +15,8 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    volumes:
+      - wp_data:/var/www/html
     env_file:
       - .env
     networks:
