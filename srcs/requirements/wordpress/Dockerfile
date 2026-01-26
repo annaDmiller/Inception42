@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
         php-fpm php-mysql php-mbstring php-xml php-curl php-zip \
-        curl tar ca-certificates netcat-openbsd && \
+        curl tar ca-certificates netcat-openbsd wget && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/www/html
