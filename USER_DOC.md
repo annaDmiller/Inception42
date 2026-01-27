@@ -1,8 +1,8 @@
 ## USER DOCUMENTATION
 
 This document explains how to use and operate the Inception Docker infrastructure as an end user or system administrator.
-# Prerequisites
 
+# Prerequisites
 Install required tools:
 
 - Docker

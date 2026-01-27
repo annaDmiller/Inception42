@@ -1,6 +1,6 @@
 This project has been created as part of the 42 curriculum by <amelniko>
 
-Description:
+# Description:
 This project's aim is to broaden the student's knowledge and skills in system administration by using Docker and
 to get acknowledged with Docker functionality. It is required to use the VM for the project where Docker will be
 installed.
@@ -19,7 +19,7 @@ It is required to create our own Dockerfiles for each container instead of using
  understand the logic of building a full Docker image ready for build.
 
 
-VM vs Docker
+# VM vs Docker
     VM is the emulation of a whole physical computer including hardware components and network interfaces. Each VM
  runs its own OS which is fully isolated from host machine and other VMs.
     Docker is a solution of virtualization as well. Containers created with Docker are lightweight, portable and
@@ -34,7 +34,7 @@ VM vs Docker
  credentials in the code).
 
 
-Secrets vs Environment variables
+# Secrets vs Environment variables
     Both terms are related with the security measures usually applied for Docker projects.
     Docker Compose provides a way for you to use secrets without having to use environment variables to store information.
  If you’re injecting passwords and API keys as environment variables, you risk unintentional information exposure. Services
@@ -48,7 +48,7 @@ Secrets vs Environment variables
  Production. It's also forbidden to store .env or secret files in the cloud.
 
 
-Docker Network vs Host Network
+# Docker Network vs Host Network
     Docker provides multiple networking types. The default networking is BRIDGE and another most common one is HOST.
     Bridge Network (default Docker network). Docker creates a virtual network bridge and assigns each container its own
  IP addresses so containers can communicate with each other over this bridge. This way the ports must be explicitly
@@ -63,7 +63,7 @@ Docker Network vs Host Network
 
 
 
-Docker Volumes vs Bind Mounts
+# Docker Volumes vs Bind Mounts
     There are 2 main ways to save the data ourside of the container: volumes and bind mounts.
     Docker volumes are docker-managed storage locations that live outside of the containers' system. They are stored in
  the Docker's internal data directory and can be easily reused and shared between containers. They are safer across
@@ -77,7 +77,7 @@ Docker Volumes vs Bind Mounts
 
 
 
-Instructions (after the project is cloned to the local machine):
+# Instructions (after the project is cloned to the local machine):
 1. The project is lack of .env file which contains all essential data related to credentials, important variables
     of database. In order to start any compilation it is required to create/copy the .env file into the /srcs
     directory. This file must contain at least such values: MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD,
@@ -95,8 +95,7 @@ Instructions (after the project is cloned to the local machine):
 
 
 
-
-Resources:
+# Resources:
 - Docker official web page
 - Articles about Docker and its usage
 - Articles about how to work with Docker and Docker terms
