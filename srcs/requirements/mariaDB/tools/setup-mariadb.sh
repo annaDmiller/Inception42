@@ -3,11 +3,6 @@ set -e
 
 DATADIR="/var/lib/mysql"
 
-: "${MYSQL_DATABASE:?Need MYSQL_DATABASE}"
-: "${MYSQL_USER:?Need MYSQL_USER}"
-: "${MYSQL_PASSWORD:?Need MYSQL_PASSWORD}"
-: "${MYSQL_ROOT_PASSWORD:?Need MYSQL_ROOT_PASSWORD}"
-
 sed -i 's|MYSQL_DATABASE|'${MYSQL_DATABASE}'|g' /tmp/init.sql
 sed -i 's|MYSQL_USER|'${MYSQL_USER}'|g' /tmp/init.sql
 sed -i 's|MYSQL_PASSWORD|'${MYSQL_PASSWORD}'|g' /tmp/init.sql
