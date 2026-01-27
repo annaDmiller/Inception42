@@ -8,6 +8,11 @@ DATADIR="/var/lib/mysql"
 : "${MYSQL_PASSWORD:?Need MYSQL_PASSWORD}"
 : "${MYSQL_ROOT_PASSWORD:?Need MYSQL_ROOT_PASSWORD}"
 
+sed -i 's|MYSQL_DATABASE|'${MYSQL_DATABASE}'|g' /tmp/init.sql
+sed -i 's|MYSQL_USER|'${MYSQL_USER}'|g' /tmp/init.sql
+sed -i 's|MYSQL_PASSWORD|'${MYSQL_PASSWORD}'|g' /tmp/init.sql
+sed -i 's|MYSQL_ROOT_PASSWORD|'${MYSQL_ROOT_PASSWORD}'|g' /tmp/init.sql
+
 chown -R mysql:mysql "$DATADIR" /run/mysqld
 
 if [ ! -d "$DATADIR/mysql" ]; then
@@ -20,13 +25,7 @@ if [ ! -d "$DATADIR/mysql" ]; then
     sleep 10
 
     echo "Configure root, database and user..."
-    mysql -u root <<-EOSQL
-        CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;
-        CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';
-        GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
-        FLUSH PRIVILEGES;
-        ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
-EOSQL
+    mysql --init-file="/tmp/init.sql"
 
     echo "Stop temp MariaDB..."
     kill "$pid"

@@ -11,6 +11,7 @@ RUN mkdir -p /run/mysqld /var/lib/mysql
 
 COPY tools/setup-mariadb.sh /usr/local/bin/
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY conf/init.sql /tmp
 RUN chmod +x /usr/local/bin/setup-mariadb.sh
 
 EXPOSE 3306
